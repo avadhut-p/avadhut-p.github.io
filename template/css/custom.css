@@ -1,0 +1,14 @@
+
+.skills-images {
+    height: 3.5rem;
+}
+
+.skill-logo-row {
+    text-align: center;
+    padding: 2rem 2rem 0 2rem;
+    font-size: 3rem;
+}
+.skill-logo-img {
+    margin: 1rem 0.5rem;
+    height: 55px;
+}
