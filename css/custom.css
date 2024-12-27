@@ -1,0 +1,26 @@
+
+.skill-logo-row {
+    text-align: center;
+    padding: 2rem 2rem 0 2rem;
+    font-size: 3rem;
+}
+.skill-logo-img {
+    margin: 1rem 0.5rem;
+    height: 55px;
+}
+
+section.section-padding-top {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+@media (min-width: 992px) {
+    section.section-padding-top {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+
+.mb-5 {
+    margin-bottom: 2rem !important;
+}
