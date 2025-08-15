@@ -3,7 +3,7 @@
 // Load header and footer
 document.addEventListener('DOMContentLoaded', function() {
     // Load header
-    fetch('includes/header.html')
+    fetch('header.html')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Header not found');
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     
     // Load footer
-    fetch('includes/footer.html')
+    fetch('footer.html')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Footer not found');
