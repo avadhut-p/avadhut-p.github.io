@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Samples & Demos - My Solutions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="page-header">
+        <h1>Code Samples & Live Demos</h1>
+        <p>Explore our technical expertise through interactive demos and code examples</p>
+    </section>
+
+    <section class="samples">
+        <div class="samples-grid">
+            <div class="sample-card fade-in">
+                <div class="sample-header">
+                    <div class="sample-icon">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <h3>Spring Boot REST API</h3>
+                </div>
+                <div class="sample-content">
+                    <p>Complete REST API with authentication, CRUD operations, and database integration using Spring Boot and JPA.</p>
+                    
+                    <div class="code-preview">
+                        <pre><code>@RestController
+@RequestMapping("/api/users")
+public class UserController {
+    
+    @Autowired
+    private UserService userService;
+    
+    @GetMapping
+    public ResponseEntity&lt;List&lt;User&gt;&gt; getAllUsers() {
+        return ResponseEntity.ok(userService.findAll());
+    }
+    
+    @PostMapping
+    public ResponseEntity&lt;User&gt; createUser(@RequestBody User user) {
+        return ResponseEntity.ok(userService.save(user));
+    }
+}</code></pre>
+                    </div>
+                    
+                    <div class="tech-tags" style="margin: 1rem 0;">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">JPA</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                    
+                    <div class="sample-actions">
+                        <a href="#" class="cta-button">View Full Code</a>
+                        <a href="#" class="cta-button secondary">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sample-card fade-in">
+                <div class="sample-header">
+                    <div class="sample-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3>React Dashboard</h3>
+                </div>
+                <div class="sample-content">
+                    <p>Modern React dashboard with hooks, context API, and real-time data visualization using Chart.js.</p>
+                    
+                    <div class="code-preview">
+                        <pre><code>import React, { useState, useEffect } from 'react';
+import { Chart as ChartJS, CategoryScale, LinearScale } from 'chart.js';
+import { Line } from 'react-chartjs-2';
+
+const Dashboard = () => {
+    const [data, setData] = useState([]);
+    
+    useEffect(() => {
+        fetchAnalytics();
+    }, []);
+    
+    return (
+        &lt;div className="dashboard"&gt;
+            &lt;Line data={chartData} options={options} /&gt;
+        &lt;/div&gt;
+    );
+};</code></pre>
+                    </div>
+                    
+                    <div class="tech-tags" style="margin: 1rem 0;">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Hooks</span>
+                        <span class="tech-tag">Chart.js</span>
+                        <span class="tech-tag">CSS Grid</span>
+                    </div>
+                    
+                    <div class="sample-actions">
+                        <a href="#" class="cta-button">View Full Code</a>
+                        <a href="#" class="cta-button secondary">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sample-card fade-in">
+                <div class="sample-header">
+                    <div class="sample-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Three.js 3D Scene</h3>
+                </div>
+                <div class="sample-content">
+                    <p>Interactive 3D scene with animated objects, lighting effects, and user controls using Three.js and WebGL.</p>
+                    
+                    <div class="code-preview">
+                        <pre><code>import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(geometry, material);
+
+scene.add(cube);
+
+function animate() {
+    requestAnimationFrame(animate);
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+    renderer.render(scene, camera);
+}</code></pre>
+                    </div>
+                    
+                    <div class="tech-tags" style="margin: 1rem 0;">
+                        <span class="tech-tag">Three.js</span>
+                        <span class="tech-tag">WebGL</span>
+                        <span class="tech-tag">GLSL</span>
+                        <span class="tech-tag">Animation</span>
+                    </div>
+                    
+                    <div class="sample-actions">
+                        <a href="#" class="cta-button">View Full Code</a>
+                        <a href="#" class="cta-button secondary">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sample-card fade-in">
+                <div class="sample-header">
+                    <div class="sample-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>MongoDB Aggregation</h3>
+                </div>
+                <div class="sample-content">
+                    <p>Complex data aggregation and analysis using MongoDB aggregation pipeline with Node.js integration.</p>
+                    
+                    <div class="code-preview">
+                        <pre><code>const pipeline = [
+    {
+        $match: {
+            createdAt: {
+                $gte: new Date('2024-01-01'),
+                $lt: new Date('2024-12-31')
+            }
+        }
+    },
+    {
+        $group: {
+            _id: { $month: '$createdAt' },
+            totalSales: { $sum: '$amount' },
+            averageOrder: { $avg: '$amount' },
+            count: { $sum: 1 }
+        }
+    },
+    {
+        $sort: { '_id': 1 }
+    }
+];
+
+const result = await db.collection('orders').aggregate(pipeline).toArray();</code></pre>
+                    </div>
+                    
+                    <div class="tech-tags" style="margin: 1rem 0;">
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Aggregation</span>
+                        <span class="tech-tag">Analytics</span>
+                    </div>
+                    
+                    <div class="sample-actions">
+                        <a href="#" class="cta-button">View Full Code</a>
+                        <a href="#" class="cta-button secondary">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sample-card fade-in">
+                <div class="sample-header">
+                    <div class="sample-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>React Native App</h3>
+                </div>
+                <div class="sample-content">
+                    <p>Cross-platform mobile app with navigation, state management, and native device integration.</p>
+                    
+                    <div class="code-preview">
+                        <pre><code>import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Provider } from 'react-redux';
+import { store } from './store';
+
+const Stack = createStackNavigator();
+
+export default function App() {
+    return (
+        &lt;Provider store={store}&gt;
+            &lt;NavigationContainer&gt;
+                &lt;Stack.Navigator initialRouteName="Home"&gt;
+                    &lt;Stack.Screen name="Home" component={HomeScreen} /&gt;
+                    &lt;Stack.Screen name="Profile" component={ProfileScreen} /&gt;
+                &lt;/Stack.Navigator&gt;
+            &lt;/NavigationContainer&gt;
+        &lt;/Provider&gt;
+    );
+}</code></pre>
+                    </div>
+                    
+                    <div class="tech-tags" style="margin: 1rem 0;">
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Redux</span>
+                        <span class="tech-tag">Navigation</span>
+                        <span class="tech-tag">Native APIs</span>
+                    </div>
+                    
+                    <div class="sample-actions">
+                        <a href="#" class="cta-button">View Full Code</a>
+                        <a href="#" class="cta-button secondary">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sample-card fade-in">
+                <div class="sample-header">
+                    <div class="sample-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Docker & Kubernetes</h3>
+                </div>
+                <div class="sample-content">
+                    <p>Containerized application deployment with Docker and Kubernetes orchestration for scalable microservices.</p>
+                    
+                    <div class="code-preview">
+                        <pre><code># Dockerfile
+FROM node:16-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
+
+---
+# kubernetes-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: my-app:latest
+        ports:
+        - containerPort: 3000</code></pre>
+                    </div>
+                    
+                    <div class="tech-tags" style="margin: 1rem 0;">
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">DevOps</span>
+                        <span class="tech-tag">CI/CD</span>
+                    </div>
+                    
+                    <div class="sample-actions">
+                        <a href="#" class="cta-button">View Full Code</a>
+                        <a href="#" class="cta-button secondary">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: linear-gradient(135deg, #f8f9fa 0%, #e2e8f0 100%);">
+        <h2 class="section-title">Interactive Demos</h2>
+        <p class="section-subtitle">Try our live applications and see our technologies in action</p>
+        
+        <div class="demo-grid">
+            <div class="demo-card fade-in">
+                <div class="demo-preview">
+                    <i class="fas fa-shopping-cart" style="font-size: 3rem; color: #4f46e5;"></i>
+                </div>
+                <h3>E-Commerce Demo</h3>
+                <p>Full-featured online store with cart, checkout, and admin panel</p>
+                <a href="#" class="cta-button">Try Demo</a>
+            </div>
+            
+            <div class="demo-card fade-in">
+                <div class="demo-preview">
+                    <i class="fas fa-chart-bar" style="font-size: 3rem; color: #4f46e5;"></i>
+                </div>
+                <h3>Analytics Dashboard</h3>
+                <p>Real-time data visualization with interactive charts and reports</p>
+                <a href="#" class="cta-button">Try Demo</a>
+            </div>
+            
+            <div class="demo-card fade-in">
+                <div class="demo-preview">
+                    <i class="fas fa-cube" style="font-size: 3rem; color: #4f46e5;"></i>
+                </div>
+                <h3>3D Product Viewer</h3>
+                <p>Interactive 3D product visualization with customization options</p>
+                <a href="#" class="cta-button">Try Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="text-center">
+            <h2 class="section-title">Want to See More?</h2>
+            <p class="section-subtitle">Explore our full portfolio or discuss your custom project requirements</p>
+            <div>
+                <a href="portfolio.html" class="cta-button">View Portfolio</a>
+                <a href="contact.html" class="cta-button secondary">Start Your Project</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+    <script src="assets/js/main.js"></script>
+</body>
+</html> 

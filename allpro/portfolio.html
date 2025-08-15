@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - My Solutions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="page-header">
+        <h1>Our Portfolio</h1>
+        <p>Showcasing our best work across different industries and technologies</p>
+    </section>
+
+    <section class="portfolio">
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="web">Web Development</button>
+            <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+            <button class="filter-btn" data-filter="3d">3D & Visualization</button>
+            <button class="filter-btn" data-filter="training">Training Projects</button>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-item fade-in" data-category="web">
+                <div class="portfolio-image">
+                    <i class="fas fa-shopping-cart" style="font-size: 4rem; color: #4f46e5;"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>E-Commerce Platform</h3>
+                    <p>Modern e-commerce solution with payment integration, inventory management, and admin dashboard built with Spring Boot and React.</p>
+                    <div class="tech-tags" style="margin: 1rem 0;">
+                        <span class="tech-tag" style="background: #4f46e5; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Java</span>
+                        <span class="tech-tag" style="background: #10b981; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Spring Boot</span>
+                        <span class="tech-tag" style="background: #3b82f6; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">React</span>
+                        <span class="tech-tag" style="background: #f59e0b; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">MySQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item fade-in" data-category="mobile">
+                <div class="portfolio-image">
+                    <i class="fas fa-mobile-alt" style="font-size: 4rem; color: #4f46e5;"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Fitness Tracking App</h3>
+                    <p>Cross-platform mobile app for workout tracking, progress monitoring, and social features with real-time synchronization.</p>
+                    <div class="tech-tags" style="margin: 1rem 0;">
+                        <span class="tech-tag" style="background: #3b82f6; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">React Native</span>
+                        <span class="tech-tag" style="background: #10b981; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Node.js</span>
+                        <span class="tech-tag" style="background: #ef4444; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">MongoDB</span>
+                        <span class="tech-tag" style="background: #f59e0b; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Firebase</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item fade-in" data-category="web">
+                <div class="portfolio-image">
+                    <i class="fas fa-chart-line" style="font-size: 4rem; color: #4f46e5;"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>SaaS Analytics Dashboard</h3>
+                    <p>Real-time analytics platform with data visualization, reporting tools, and user management for enterprise clients.</p>
+                    <div class="tech-tags" style="margin: 1rem 0;">
+                        <span class="tech-tag" style="background: #3b82f6; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Next.js</span>
+                        <span class="tech-tag" style="background: #4f46e5; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">TypeScript</span>
+                        <span class="tech-tag" style="background: #10b981; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">PostgreSQL</span>
+                        <span class="tech-tag" style="background: #f59e0b; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">D3.js</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item fade-in" data-category="3d">
+                <div class="portfolio-image">
+                    <i class="fas fa-home" style="font-size: 4rem; color: #4f46e5;"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Real Estate 3D Tour</h3>
+                    <p>Interactive 3D property visualization with virtual walkthrough and furniture placement using Three.js and WebGL.</p>
+                    <div class="tech-tags" style="margin: 1rem 0;">
+                        <span class="tech-tag" style="background: #ef4444; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Three.js</span>
+                        <span class="tech-tag" style="background: #f59e0b; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Blender</span>
+                        <span class="tech-tag" style="background: #10b981; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">WebGL</span>
+                        <span class="tech-tag" style="background: #7c3aed; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">AR</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item fade-in" data-category="web">
+                <div class="portfolio-image">
+                    <i class="fas fa-users" style="font-size: 4rem; color: #4f46e5;"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Team Collaboration Platform</h3>
+                    <p>Project management tool with real-time collaboration, file sharing, and communication features for remote teams.</p>
+                    <div class="tech-tags" style="margin: 1rem 0;">
+                        <span class="tech-tag" style="background: #10b981; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Vue.js</span>
+                        <span class="tech-tag" style="background: #ef4444; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Laravel</span>
+                        <span class="tech-tag" style="background: #f59e0b; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">WebSocket</span>
+                        <span class="tech-tag" style="background: #4f46e5; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">AWS S3</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item fade-in" data-category="3d">
+                <div class="portfolio-image">
+                    <i class="fas fa-cube" style="font-size: 4rem; color: #4f46e5;"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Product 3D Configurator</h3>
+                    <p>Interactive 3D product visualization tool for e-commerce with customizable features, materials, and real-time rendering.</p>
+                    <div class="tech-tags" style="margin: 1rem 0;">
+                        <span class="tech-tag" style="background: #ef4444; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Three.js</span>
+                        <span class="tech-tag" style="background: #3b82f6; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">React</span>
+                        <span class="tech-tag" style="background: #10b981; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">WebGL</span>
+                        <span class="tech-tag" style="background: #f59e0b; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">GLTF</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item fade-in" data-category="training">
+                <div class="portfolio-image">
+                    <i class="fas fa-graduation-cap" style="font-size: 4rem; color: #4f46e5;"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Java Training Platform</h3>
+                    <p>Comprehensive online learning platform with interactive coding exercises, progress tracking, and certification system.</p>
+                    <div class="tech-tags" style="margin: 1rem 0;">
+                        <span class="tech-tag" style="background: #4f46e5; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Java</span>
+                        <span class="tech-tag" style="background: #10b981; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Spring Boot</span>
+                        <span class="tech-tag" style="background: #3b82f6; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">React</span>
+                        <span class="tech-tag" style="background: #ef4444; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">MongoDB</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-item fade-in" data-category="mobile">
+                <div class="portfolio-image">
+                    <i class="fas fa-utensils" style="font-size: 4rem; color: #4f46e5;"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Food Delivery App</h3>
+                    <p>Complete food ordering platform with restaurant management, delivery tracking, and payment processing for multiple cities.</p>
+                    <div class="tech-tags" style="margin: 1rem 0;">
+                        <span class="tech-tag" style="background: #3b82f6; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Flutter</span>
+                        <span class="tech-tag" style="background: #f59e0b; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Firebase</span>
+                        <span class="tech-tag" style="background: #10b981; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Google Maps</span>
+                        <span class="tech-tag" style="background: #ef4444; color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Stripe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="contact.html" class="cta-button">Start Your Project</a>
+            <a href="services.html" class="cta-button secondary">View All Services</a>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+    <script src="assets/js/main.js"></script>
+</body>
+</html> 

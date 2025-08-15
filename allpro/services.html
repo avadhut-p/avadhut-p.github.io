@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - My Solutions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <section class="page-header">
+        <h1>Our Services</h1>
+        <p>Comprehensive web development, training programs, and 3D modeling solutions for businesses of all sizes</p>
+    </section>
+
+    <section class="services-detail">
+        <div id="web-development" class="service-section">
+            <div class="service-header">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div>
+                    <h2>Web Application Development</h2>
+                    <p>Full-stack web applications using modern technologies and best practices</p>
+                </div>
+            </div>
+            <div class="service-content">
+                <div>
+                    <h3>What We Offer</h3>
+                    <p>We build scalable, secure, and high-performance web applications tailored to your business needs. From simple websites to complex enterprise solutions, we've got you covered.</p>
+                    
+                    <h4>Technologies We Use</h4>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0;">
+                        <span style="background: #4f46e5; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Java</span>
+                        <span style="background: #10b981; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Spring Boot</span>
+                        <span style="background: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">React</span>
+                        <span style="background: #f59e0b; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Node.js</span>
+                        <span style="background: #ef4444; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">MongoDB</span>
+                    </div>
+                </div>
+                <div>
+                    <h4>Service Features</h4>
+                    <ul class="service-features">
+                        <li>Custom web application development</li>
+                        <li>E-commerce platform development</li>
+                        <li>API development and integration</li>
+                        <li>Database design and optimization</li>
+                        <li>Cloud deployment and hosting</li>
+                        <li>Maintenance and support</li>
+                        <li>Performance optimization</li>
+                        <li>Security implementation</li>
+                    </ul>
+                    <a href="contact.html" class="cta-button" onclick="trackServiceInquiry('Web Development')">Get Quote</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="training" class="service-section">
+            <div class="service-header">
+                <div class="service-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h2>Training & Internship Programs</h2>
+                    <p>Comprehensive training programs to launch your tech career</p>
+                </div>
+            </div>
+            <div class="service-content">
+                <div>
+                    <h3>Training Programs</h3>
+                    <p>Our training programs are designed to provide hands-on experience with industry-standard technologies. Learn from experienced professionals and work on real projects.</p>
+                    
+                    <h4>Program Highlights</h4>
+                    <ul class="service-features">
+                        <li>Live online classes with expert instructors</li>
+                        <li>Hands-on projects and assignments</li>
+                        <li>Industry-relevant curriculum</li>
+                        <li>Career guidance and job placement assistance</li>
+                        <li>Certificate of completion</li>
+                        <li>Lifetime access to course materials</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Available Courses</h4>
+                    <ul class="service-features">
+                        <li>Java & Spring Boot Mastery</li>
+                        <li>MERN Stack Development</li>
+                        <li>Database Design & Optimization</li>
+                        <li>3D Web Development with Three.js</li>
+                        <li>DevOps and Cloud Computing</li>
+                        <li>Mobile App Development</li>
+                    </ul>
+                    <a href="courses.html" class="cta-button" onclick="trackCourseInterest('Training Programs')">View Courses</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="3d-modeling" class="service-section">
+            <div class="service-header">
+                <div class="service-icon">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <div>
+                    <h2>3D Modeling & Visualization</h2>
+                    <p>Interactive 3D experiences and product visualizations for web</p>
+                </div>
+            </div>
+            <div class="service-content">
+                <div>
+                    <h3>3D Solutions</h3>
+                    <p>Create stunning 3D visualizations and interactive experiences that engage your audience. Perfect for product showcases, architectural visualization, and immersive web experiences.</p>
+                    
+                    <h4>Applications</h4>
+                    <ul class="service-features">
+                        <li>Product visualization and configurators</li>
+                        <li>Architectural walkthroughs</li>
+                        <li>Interactive 3D websites</li>
+                        <li>Educational 3D content</li>
+                        <li>Virtual showrooms</li>
+                        <li>3D games and simulations</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Technologies</h4>
+                    <ul class="service-features">
+                        <li>Three.js for web 3D graphics</li>
+                        <li>WebGL for high-performance rendering</li>
+                        <li>Blender for 3D modeling</li>
+                        <li>Unity for complex interactions</li>
+                        <li>AR/VR integration</li>
+                        <li>Performance optimization</li>
+                    </ul>
+                    <a href="portfolio.html" class="cta-button" onclick="trackServiceInquiry('3D Modeling')">View Examples</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="consulting" class="service-section">
+            <div class="service-header">
+                <div class="service-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <div>
+                    <h2>Technical Consulting</h2>
+                    <p>Strategic technology guidance for your business growth</p>
+                </div>
+            </div>
+            <div class="service-content">
+                <div>
+                    <h3>Consulting Services</h3>
+                    <p>Get expert advice on technology strategy, architecture decisions, and implementation best practices. We help businesses make informed technology choices.</p>
+                    
+                    <h4>Consulting Areas</h4>
+                    <ul class="service-features">
+                        <li>Technology stack selection</li>
+                        <li>Architecture design and review</li>
+                        <li>Code review and optimization</li>
+                        <li>Team training and mentoring</li>
+                        <li>Project planning and estimation</li>
+                        <li>Quality assurance processes</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Why Choose Our Consulting</h4>
+                    <ul class="service-features">
+                        <li>Years of industry experience</li>
+                        <li>Proven track record</li>
+                        <li>Technology-agnostic approach</li>
+                        <li>Focus on business outcomes</li>
+                        <li>Flexible engagement models</li>
+                        <li>Ongoing support available</li>
+                    </ul>
+                    <a href="contact.html" class="cta-button" onclick="trackServiceInquiry('Consulting')">Schedule Consultation</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="seo-optimization" class="service-section">
+            <div class="service-header">
+                <div class="service-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div>
+                    <h2>SEO Optimization</h2>
+                    <p>Improve your search engine rankings and drive organic traffic to your website</p>
+                </div>
+            </div>
+            <div class="service-content">
+                <div>
+                    <h3>SEO Services</h3>
+                    <p>Boost your online visibility with our comprehensive SEO strategies. We help businesses rank higher on search engines and attract more qualified leads through organic search.</p>
+                    
+                    <h4>SEO Techniques</h4>
+                    <ul class="service-features">
+                        <li>Keyword research and analysis</li>
+                        <li>On-page SEO optimization</li>
+                        <li>Technical SEO audits</li>
+                        <li>Content optimization</li>
+                        <li>Link building strategies</li>
+                        <li>Local SEO for businesses</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>What You Get</h4>
+                    <ul class="service-features">
+                        <li>Improved search rankings</li>
+                        <li>Increased organic traffic</li>
+                        <li>Better user experience</li>
+                        <li>Monthly performance reports</li>
+                        <li>Competitor analysis</li>
+                        <li>Ongoing optimization</li>
+                    </ul>
+                    <a href="contact.html" class="cta-button" onclick="trackServiceInquiry('SEO Optimization')">Boost Rankings</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="digital-marketing" class="service-section">
+            <div class="service-header">
+                <div class="service-icon">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <div>
+                    <h2>Digital Marketing</h2>
+                    <p>Comprehensive digital marketing strategies to grow your online presence</p>
+                </div>
+            </div>
+            <div class="service-content">
+                <div>
+                    <h3>Marketing Solutions</h3>
+                    <p>Drive growth with our data-driven digital marketing strategies. From social media management to PPC campaigns, we help you reach your target audience effectively.</p>
+                    
+                    <h4>Marketing Channels</h4>
+                    <ul class="service-features">
+                        <li>Social media marketing</li>
+                        <li>Google Ads & PPC campaigns</li>
+                        <li>Email marketing automation</li>
+                        <li>Content marketing strategy</li>
+                        <li>Influencer partnerships</li>
+                        <li>Analytics and reporting</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Campaign Management</h4>
+                    <ul class="service-features">
+                        <li>Strategy development</li>
+                        <li>Creative content creation</li>
+                        <li>Campaign optimization</li>
+                        <li>A/B testing</li>
+                        <li>ROI tracking</li>
+                        <li>Performance analysis</li>
+                    </ul>
+                    <a href="contact.html" class="cta-button" onclick="trackServiceInquiry('Digital Marketing')">Start Campaign</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <h2 class="section-title">Service Packages</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Starter Package</h3>
+                <div class="price">$2,500</div>
+                <p>Perfect for small businesses</p>
+                <ul style="text-align: left; margin: 1rem 0;">
+                    <li>Simple web application</li>
+                    <li>Basic database design</li>
+                    <li>Responsive design</li>
+                    <li>3 months support</li>
+                    <li>Basic SEO optimization</li>
+                </ul>
+                <a href="contact.html" class="cta-button">Get Started</a>
+            </div>
+            <div class="pricing-card featured">
+                <h3>Professional Package</h3>
+                <div class="price">$7,500</div>
+                <p>Most popular for growing businesses</p>
+                <ul style="text-align: left; margin: 1rem 0;">
+                    <li>Full-stack web application</li>
+                    <li>Advanced features & integrations</li>
+                    <li>Admin dashboard</li>
+                    <li>6 months support</li>
+                    <li>Performance optimization</li>
+                    <li>Security implementation</li>
+                </ul>
+                <a href="contact.html" class="cta-button">Get Started</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Enterprise Package</h3>
+                <div class="price">$15,000+</div>
+                <p>For large-scale applications</p>
+                <ul style="text-align: left; margin: 1rem 0;">
+                    <li>Complex enterprise solution</li>
+                    <li>Microservices architecture</li>
+                    <li>Advanced security & compliance</li>
+                    <li>12 months support</li>
+                    <li>Team training included</li>
+                    <li>Ongoing maintenance</li>
+                </ul>
+                <a href="contact.html" class="cta-button">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
