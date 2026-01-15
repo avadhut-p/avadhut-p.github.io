@@ -87,66 +87,52 @@
             width: 100%;
         }
 
-        /* Hero */
-        .hero {
-            min-height: 95vh;
-            display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-            align-items: center;
-            gap: 50px;
-            padding: 120px 7% 80px;
+        /* Hero Slider */
+        .hero-slider {
+            position: relative;
+            height: 85vh;
+            min-height: 550px;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 74px; /* Nav height */
+        }
+        
+        .slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+            display: flex;
+            align-items: flex-end; /* Move content to bottom */
+            justify-content: flex-start; /* Move content to left */
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide-content {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            padding: 30px 40px;
+            border-radius: 4px;
+            text-align: left;
+            max-width: 550px;
+            margin: 0 0 60px 7%; /* Position from bottom-left */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
         }
 
-        .hero-text h1 {
+        .slide-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.4rem;
+            font-size: 3rem;
             margin: 0 0 10px;
             color: var(--accent);
         }
 
-        .hero-text h1 span {
+        .slide-content h1 span {
             color: var(--gold);
-        }
-
-        .hero-tagline {
-            font-size: 1rem;
-            color: var(--muted);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        .hero-sub {
-            font-size: 1.1rem;
-            max-width: 520px;
-            margin: 18px 0 26px;
-        }
-
-        .hero-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 26px;
-        }
-
-        .badge {
-            font-size: 0.75rem;
-            padding: 6px 12px;
-            border-radius: 999px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            background: white;
-        }
-
-        .badge.gold {
-            border-color: rgba(212, 175, 55, 0.2);
-            background: #fff9e6;
-            color: #8a6d00;
-        }
-
-        .cta-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            align-items: center;
         }
 
         .cta-btn {
@@ -158,65 +144,46 @@
             font-weight: 600;
             font-size: 0.95rem;
             box-shadow: 0 10px 28px rgba(179, 57, 57, 0.28);
+            display: inline-block;
+            margin-top: 20px;
         }
 
-        .secondary-link {
-            font-size: 0.9rem;
-            text-decoration: underline;
-            text-underline-offset: 4px;
-            color: var(--muted);
-        }
-
-        .hero-note {
-            margin-top: 10px;
-            font-size: 0.8rem;
-            color: var(--muted);
-        }
-
-        .hero-visual {
-            position: relative;
-        }
-
-        .hero-main-image {
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 26px 60px rgba(0, 0, 0, 0.18);
-            background: #eee;
-            min-height: 260px;
-        }
-
-        .hero-main-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .hero-floater {
+        /* Slider Controls */
+        .slider-arrow {
             position: absolute;
-            bottom: -20px;
-            left: -20px;
-            background: white;
-            padding: 14px 16px;
-            border-radius: 16px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
-            font-size: 0.8rem;
-            max-width: 220px;
-        }
-
-        .hero-floater strong {
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.2rem;
             color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
         }
+        .slider-arrow:hover { background: white; }
+        .slider-arrow.prev { left: 20px; }
+        .slider-arrow.next { right: 20px; }
 
-        .rating-chip {
+        .slider-dots {
             position: absolute;
-            top: -12px;
-            right: 12px;
-            background: #111827;
-            color: #f9fafb;
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-size: 0.75rem;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .dot {
+            width: 10px; height: 10px; background: rgba(255,255,255,0.5); border-radius: 50%; cursor: pointer; transition: 0.3s;
+        }
+        .dot.active { background: var(--accent); transform: scale(1.2); }
         }
 
         /* Generic section styling */
@@ -437,6 +404,50 @@
             font-size: 0.85rem;
             color: var(--muted);
         }
+        
+        /* Events Section */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .event-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .event-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .event-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .event-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 30px 20px 20px;
+            color: white;
+        }
+        
+        .event-content h3 {
+            margin: 0 0 5px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
 
         /* Contact & Order */
         .contact-layout {
@@ -554,16 +565,7 @@
 
         /* Responsive adjustments */
         @media (max-width: 960px) {
-            .hero {
-                grid-template-columns: 1fr;
-                padding-top: 110px;
-            }
-
-            .hero-visual {
-                order: -1;
-            }
-
-            .hero-text h1 {
+            .slide-content h1 {
                 font-size: 2.6rem;
             }
 
@@ -592,12 +594,8 @@
         }
 
         @media (max-width: 520px) {
-            .hero-text h1 {
+            .slide-content h1 {
                 font-size: 2.2rem;
-            }
-
-            .hero-main-image {
-                border-radius: 18px;
             }
 
             .whatsapp-btn {
@@ -618,6 +616,7 @@
     <div class="nav-links">
         <a href="#home">Home</a>
         <a href="#about">About</a>
+        <a href="#events">Events</a>
         <a href="#gallery">Gallery</a>
         <a href="#menu">Cakes & Cookies</a>
         <a href="#testimonials">Reviews</a>
@@ -625,38 +624,41 @@
     </div>
 </nav>
 
-<!-- HERO -->
-<section id="home" class="hero">
-    <div class="hero-text">
-        <div class="hero-tagline">Small-batch, made to order</div>
-        <h1>Thoughtfully baked <span>cakes & cookies</span>.</h1>
-        <p class="hero-sub">
-            Unibakes specializes in handcrafted celebration cakes, indulgent cookies and warm oven bakes –
-            baked fresh from our home kitchen for birthdays, festive gifting and everyday treats.
-        </p>
-        <div class="hero-badges">
-            <div class="badge gold">★ 4.7 / 5 from repeat customers</div>
-            <div class="badge">Egg / Eggless options</div>
-            <div class="badge">Custom designs & flavors</div>
-        </div>
-        <div class="cta-row">
-            <a href="#menu" class="cta-btn">Browse cakes & cookies</a>
-            <a href="#contact" class="secondary-link">Plan a custom order →</a>
-        </div>
-        <div class="hero-note">
-            Serving Pune (same-day on select items) · Pan-India shipping for select dry bakes on request.
+<!-- HERO SLIDER -->
+<section id="home" class="hero-slider">
+    <!-- Controls -->
+    <button class="slider-arrow prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="slider-arrow next" onclick="moveSlide(1)">&#10095;</button>
+    
+    <!-- Slide 1 -->
+    <div class="slide active" style="background-image: url('images/cake1.jpg');">
+        <div class="slide-content">
+            <h1>Thoughtfully baked <span>cakes & cookies</span>.</h1>
+            <p>Handcrafted in small batches for your special moments.</p>
+            <a href="#menu" class="cta-btn">View Menu</a>
         </div>
     </div>
-    <div class="hero-visual">
-        <div class="hero-main-image">
-            <!-- Replace src with your hero cake image from the drive link -->
-            <img src="images/cake1.jpg" alt="Signature Unibakes cake and cookies">
+    <!-- Slide 2 -->
+    <div class="slide" style="background-image: url('images/cookie1.jpg');">
+        <div class="slide-content">
+            <h1>Perfect for <span>Gifting</span>.</h1>
+            <p>Assorted cookie boxes and tea-time treats, shipped Pan-India.</p>
+            <a href="#contact" class="cta-btn">Order Now</a>
         </div>
-        <div class="hero-floater">
-            <span class="rating-chip">Weekend slots fill fast</span>
-            <strong>Popular this month</strong><br>
-            Custom birthday cakes · Assorted cookie boxes · Tea-time loaf cakes
+    </div>
+    <!-- Slide 3 -->
+    <div class="slide" style="background-image: url('images/event1.jpg');">
+        <div class="slide-content">
+            <h1>Celebrate with <span>Sweetness</span>.</h1>
+            <p>Festive hampers, wedding tables, and party favors.</p>
+            <a href="#events" class="cta-btn">Explore Events</a>
         </div>
+    </div>
+
+    <div class="slider-dots">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
     </div>
 </section>
 
@@ -689,7 +691,41 @@
         </div>
         <div class="about-image">
             <!-- Replace with your kitchen / work-in-progress image -->
-            <img src="images/cupcake4.jpg" alt="Unibakes home bakery in action">
+            <div style="display:grid; gap:16px;">
+                <img src="images/cupcake1.jpg" alt="Unibakes home bakery in action" loading="lazy" style="border-radius:16px; height:200px; width:100%; object-fit:cover;">
+                <img src="images/browne1.jpg" alt="Premium ingredients" loading="lazy" style="border-radius:16px; height:200px; width:100%; object-fit:cover;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EVENTS SECTION -->
+<section id="events" style="background: #fff9e6;">
+    <h2 class="section-title">Events & Catering</h2>
+    <p class="section-subtitle">
+        Make your special occasions sweeter with our custom dessert tables and bulk gifting options.
+    </p>
+    <div class="events-grid">
+        <div class="event-card">
+            <img src="images/event2.jpg" alt="Wedding Cakes & Tables">
+            <div class="event-content">
+                <h3>Weddings</h3>
+                <p style="margin:0; font-size:0.9rem; color:#ddd;">Elegant tiered cakes and dessert spreads.</p>
+            </div>
+        </div>
+        <div class="event-card">
+            <img src="images/event3.jpg" alt="Corporate Gifting">
+            <div class="event-content">
+                <h3>Corporate Gifting</h3>
+                <p style="margin:0; font-size:0.9rem; color:#ddd;">Branded cookies and festive hampers.</p>
+            </div>
+        </div>
+        <div class="event-card">
+            <img src="images/event1.jpg" alt="Birthday Parties">
+            <div class="event-content">
+                <h3>Parties</h3>
+                <p style="margin:0; font-size:0.9rem; color:#ddd;">Cupcakes, brownies, and return gifts.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -704,47 +740,40 @@
     <div class="gallery-grid">
         <!-- Replace each src with your own photo: e.g. birthday cakes, cookies, wedding cake etc. -->
         <div class="gallery-card">
-            <img src="images/cake2.jpg" alt="Custom birthday cake">
+            <img src="images/cake3.jpg" alt="Custom birthday cake" loading="lazy">
             <div class="gallery-label">Birthday & kids’ cakes</div>
         </div>
         <div class="gallery-card">
-            <img src="images/cookie2.jpg" alt="Assorted cookie gift box">
+            <img src="images/cookie3.jpg" alt="Assorted cookie gift box" loading="lazy">
             <div class="gallery-label">Cookie & brownie boxes</div>
         </div>
         <div class="gallery-card">
-            <img src="images/browne1.jpg" alt="Tea-time loaf cake">
+            <img src="images/browne2.jpg" alt="Tea-time loaf cake" loading="lazy">
             <div class="gallery-label">Tea-time cakes</div>
         </div>
         <div class="gallery-card">
-            <img src="images/cake3.jpg" alt="Elegant wedding cake">
+            <img src="images/cake4.jpg" alt="Elegant wedding cake" loading="lazy">
             <div class="gallery-label">Minimal & wedding cakes</div>
         </div>
         <div class="gallery-card">
-            <img src="images/modak.jpg" alt="Festive Modaks">
+            <img src="images/cupcake2.jpg" alt="Assorted Cupcakes" loading="lazy">
+            <div class="gallery-label">Cupcakes</div>
+        </div>
+        <div class="gallery-card">
+            <img src="images/cupcake3.jpg" alt="Fudgy Brownies" loading="lazy">
+            <div class="gallery-label">Brownies</div>
+        </div>
+        <div class="gallery-card">
+            <img src="images/cupcake4.jpg" alt="Fruit Tarts" loading="lazy">
+            <div class="gallery-label">Specialty Cupcakes</div>
+        </div>
+        <div class="gallery-card">
+            <img src="images/modak.jpg" alt="Glazed Donuts" loading="lazy">
             <div class="gallery-label">Festive Modaks</div>
-        </div>
-        <div class="gallery-card">
-            <img src="images/pizza1.jpg" alt="Savory Bakes">
-            <div class="gallery-label">Savory Pizza & Puffs</div>
-        </div>
-        <div class="gallery-card">
-            <img src="images/event1.jpg" alt="Catering & Events">
-            <div class="gallery-label">Events & Catering</div>
-        </div>
-        <div class="gallery-card">
-            <img src="images/cupcake2.jpg" alt="Custom Cupcakes">
-            <div class="gallery-label">Custom Cupcakes</div>
-        </div>
-        <div class="gallery-card">
-            <img src="images/browne2.jpg" alt="Fudgy Brownies">
-            <div class="gallery-label">Fudgy Brownies</div>
-        </div>
-        <div class="gallery-card">
-            <img src="images/cake4.jpg" alt="Specialty Cakes">
-            <div class="gallery-label">Specialty Cakes</div>
         </div>
     </div>
 </section>
+
 
 <!-- MENU / PRODUCTS -->
 <section id="menu">
@@ -758,6 +787,7 @@
         <div class="menu-tab">Celebration Cakes</div>
         <div class="menu-tab">Tea-time / Loaf Cakes</div>
         <div class="menu-tab">Cookies & brownies</div>
+        <div class="menu-tab">Healthy Bakes</div>
         <div class="menu-tab">Savory oven bakes</div>
     </div>
 
@@ -826,6 +856,27 @@
         </div>
 
         <div class="menu-category">
+            <h3>Healthy Bakes</h3>
+            <span>Guilt-free treats with jaggery & oats</span>
+            <div class="menu-list">
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Oats & Cranberry Cookies</div>
+                        <span class="item-note">Whole wheat, jaggery, and fiber-rich oats</span>
+                    </div>
+                    <div class="price">Box pricing</div>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Ragi & Dark Chocolate</div>
+                        <span class="item-note">Gluten-free millet flour with 70% cocoa</span>
+                    </div>
+                    <div class="price">Box pricing</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category">
             <h3>Tea-time & Loaf Cakes</h3>
             <span>Everyday bakes for coffee & chai</span>
             <div class="menu-list">
@@ -875,6 +926,7 @@
         </div>
     </div>
 </section>
+
 
 <!-- TESTIMONIALS & FAQ -->
 <section id="testimonials">
@@ -990,6 +1042,40 @@
 <footer>
     © 2026 Unibakes. Home-baked cakes, cookies & oven bakes.
 </footer>
+
+<script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let slideInterval = setInterval(() => moveSlide(1), 5000);
+
+    function showSlide(n) {
+        slideIndex = n;
+        if (slideIndex >= slides.length) slideIndex = 0;
+        if (slideIndex < 0) slideIndex = slides.length - 1;
+
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        slides[slideIndex].classList.add('active');
+        dots[slideIndex].classList.add('active');
+    }
+
+    function moveSlide(n) {
+        showSlide(slideIndex + n);
+        resetTimer();
+    }
+
+    function currentSlide(n) {
+        showSlide(n);
+        resetTimer();
+    }
+
+    function resetTimer() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(() => moveSlide(1), 5000);
+    }
+</script>
 
 </body>
 </html>

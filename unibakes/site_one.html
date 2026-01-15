@@ -87,66 +87,52 @@
             width: 100%;
         }
 
-        /* Hero */
-        .hero {
-            min-height: 95vh;
-            display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        /* Hero Slider */
+        .hero-slider {
+            position: relative;
+            height: 85vh;
+            min-height: 550px;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 74px; /* Nav height */
+        }
+        
+        .slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+            display: flex;
             align-items: center;
-            gap: 50px;
-            padding: 120px 7% 80px;
+            justify-content: flex-end;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide-content {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(3px);
+            padding: 25px 30px;
+            border-radius: 12px;
+            text-align: left;
+            max-width: 400px;
+            margin-right: 80px;
+            box-shadow: none;
         }
 
-        .hero-text h1 {
+        .slide-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.4rem;
+            font-size: 2.2rem;
             margin: 0 0 10px;
             color: var(--accent);
         }
 
-        .hero-text h1 span {
+        .slide-content h1 span {
             color: var(--gold);
-        }
-
-        .hero-tagline {
-            font-size: 1rem;
-            color: var(--muted);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        .hero-sub {
-            font-size: 1.1rem;
-            max-width: 520px;
-            margin: 18px 0 26px;
-        }
-
-        .hero-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 26px;
-        }
-
-        .badge {
-            font-size: 0.75rem;
-            padding: 6px 12px;
-            border-radius: 999px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            background: white;
-        }
-
-        .badge.gold {
-            border-color: rgba(212, 175, 55, 0.2);
-            background: #fff9e6;
-            color: #8a6d00;
-        }
-
-        .cta-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            align-items: center;
         }
 
         .cta-btn {
@@ -158,65 +144,114 @@
             font-weight: 600;
             font-size: 0.95rem;
             box-shadow: 0 10px 28px rgba(179, 57, 57, 0.28);
+            display: inline-block;
+            margin-top: 20px;
         }
 
-        .secondary-link {
-            font-size: 0.9rem;
-            text-decoration: underline;
-            text-underline-offset: 4px;
-            color: var(--muted);
+        /* Slider Dots */
+        .slider-dots {
+            position: absolute;
+            top: 50%;
+            right: 30px; /* Position on the right for desktop */
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column; /* Stack vertically */
+            gap: 15px;
+            z-index: 10;
         }
 
-        .hero-note {
-            margin-top: 10px;
-            font-size: 0.8rem;
-            color: var(--muted);
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid white;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .hero-visual {
+        .dot:hover {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
+        /* Categories Section */
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .cat-card {
             position: relative;
-        }
-
-        .hero-main-image {
-            border-radius: 24px;
+            height: 320px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 26px 60px rgba(0, 0, 0, 0.18);
-            background: #eee;
-            min-height: 260px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-
-        .hero-main-image img {
+        .cat-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
+            transition: transform 0.6s ease;
         }
-
-        .hero-floater {
+        .cat-card:hover img {
+            transform: scale(1.08);
+        }
+        .cat-overlay {
             position: absolute;
-            bottom: -20px;
-            left: -20px;
-            background: white;
-            padding: 14px 16px;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            color: white;
+        }
+        .cat-overlay h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin: 0 0 6px;
+        }
+        
+        /* Pricing Tiers */
+        .pricing-split {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .price-tier {
+            border: 1px solid #e5e7eb;
             border-radius: 16px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
-            font-size: 0.8rem;
-            max-width: 220px;
+            padding: 24px;
+            background: white;
         }
-
-        .hero-floater strong {
+        .price-tier.designer {
+            background: #fffbf0;
+            border-color: #f3e2b3;
+        }
+        .tier-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 12px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding-bottom: 12px;
+        }
+        .tier-title {
+            font-weight: 600;
             color: var(--accent);
+            font-size: 1.1rem;
         }
-
-        .rating-chip {
-            position: absolute;
-            top: -12px;
-            right: 12px;
-            background: #111827;
-            color: #f9fafb;
-            padding: 6px 12px;
-            border-radius: 999px;
-            font-size: 0.75rem;
+        .tier-price {
+            font-weight: 700;
+            font-size: 1.2rem;
         }
 
         /* Generic section styling */
@@ -397,6 +432,50 @@
             font-size: 0.75rem;
         }
 
+        /* Events Section */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .event-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .event-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .event-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .event-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 30px 20px 20px;
+            color: white;
+        }
+        
+        .event-content h3 {
+            margin: 0 0 5px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
+
         /* Testimonials & FAQ */
         .two-column {
             display: grid;
@@ -417,6 +496,11 @@
         .testimonial-name {
             margin-top: 12px;
             font-weight: 600;
+        }
+        
+        .review-date {
+            font-size: 0.75rem;
+            color: var(--muted);
         }
 
         .faq-group details {
@@ -566,6 +650,10 @@
             .hero-text h1 {
                 font-size: 2.6rem;
             }
+            
+            .slide-content h1 {
+                font-size: 2.2rem;
+            }
 
             .about-grid,
             .contact-layout {
@@ -588,6 +676,19 @@
 
             .slide-content {
                 display: none;
+            }
+
+            .slider-dots {
+                flex-direction: row; /* Align horizontally for mobile */
+                gap: 10px;
+                bottom: 20px; /* Position at the bottom */
+                top: auto;
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%); /* Center horizontally */
+                background: rgba(0,0,0,0.2);
+                padding: 8px 12px;
+                border-radius: 999px;
             }
         }
 
@@ -618,51 +719,53 @@
     <div class="nav-links">
         <a href="#home">Home</a>
         <a href="#about">About</a>
+        <a href="#categories">Categories</a>
         <a href="#gallery">Gallery</a>
-        <a href="#menu">Cakes & Cookies</a>
+        <a href="#events">Events</a>
+        <a href="#menu">Menu & Pricing</a>
         <a href="#testimonials">Reviews</a>
         <a href="#contact">Order</a>
     </div>
 </nav>
 
-<!-- HERO -->
-<section id="home" class="hero">
-    <div class="hero-text">
-        <div class="hero-tagline">Small-batch, made to order</div>
-        <h1>Thoughtfully baked <span>cakes & cookies</span>.</h1>
-        <p class="hero-sub">
-            Unibakes specializes in handcrafted celebration cakes, indulgent cookies and warm oven bakes –
-            baked fresh from our home kitchen for birthdays, festive gifting and everyday treats.
-        </p>
-        <div class="hero-badges">
-            <div class="badge gold">★ 4.7 / 5 from repeat customers</div>
-            <div class="badge">Egg / Eggless options</div>
-            <div class="badge">Custom designs & flavors</div>
-        </div>
-        <div class="cta-row">
-            <a href="#menu" class="cta-btn">Browse cakes & cookies</a>
-            <a href="#contact" class="secondary-link">Plan a custom order →</a>
-        </div>
-        <div class="hero-note">
-            Serving Pune (same-day on select items) · Pan-India shipping for select dry bakes on request.
+<!-- HERO SLIDER -->
+<section id="home" class="hero-slider">
+    <!-- Slide 1 -->
+    <div class="slide active" style="background-image: url('images/cake1.jpg');">
+        <div class="slide-content">
+            <h1>Thoughtfully baked <span>cakes & cookies</span>.</h1>
+            <p>Handcrafted in small batches for your special moments.</p>
+            <a href="#menu" class="cta-btn">View Menu</a>
         </div>
     </div>
-    <div class="hero-visual">
-        <div class="hero-main-image">
-            <!-- Replace src with your hero cake image from the drive link -->
-            <img src="images/cake1.jpg" alt="Signature Unibakes cake and cookies">
+    <!-- Slide 2 (Placeholder image) -->
+    <div class="slide" style="background-image: url('images/cookie2.jpg');">
+        <div class="slide-content">
+            <h1>Perfect for <span>Gifting</span>.</h1>
+            <p>Assorted cookie boxes and tea-time treats, shipped Pan-India.</p>
+            <a href="#contact" class="cta-btn">Order Now</a>
         </div>
-        <div class="hero-floater">
-            <span class="rating-chip">Weekend slots fill fast</span>
-            <strong>Popular this month</strong><br>
-            Custom birthday cakes · Assorted cookie boxes · Tea-time loaf cakes
+    </div>
+    <!-- Slide 3 -->
+    <div class="slide" style="background-image: url('images/event1.jpg');">
+        <div class="slide-content">
+            <h1>Celebrate with <span>Sweetness</span>.</h1>
+            <p>Festive hampers, wedding tables, and party favors.</p>
+            <a href="#events" class="cta-btn">Explore Events</a>
         </div>
+    </div>
+
+    <!-- Slider Dots Navigation -->
+    <div class="slider-dots">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
     </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-    <h2 class="section-title">Baked with care, from our home oven</h2>
+    <h2 class="section-title">About Us</h2>
     <p class="section-subtitle">
         Every Unibakes order is individually crafted – no factory mixes, no shortcuts. Just real ingredients,
         classic techniques and recipes tuned to what our customers love.
@@ -689,7 +792,37 @@
         </div>
         <div class="about-image">
             <!-- Replace with your kitchen / work-in-progress image -->
-            <img src="images/cupcake4.jpg" alt="Unibakes home bakery in action">
+            <img src="images/cupcake4.jpg" alt="Unibakes home bakery in action" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<!-- MAIN PRODUCT CATEGORIES -->
+<section id="categories" style="background: #fff;">
+    <h2 class="section-title">Our Specialties</h2>
+    <p class="section-subtitle">Explore our range of handcrafted bakes.</p>
+    
+    <div class="cat-grid">
+        <div class="cat-card" onclick="location.href='#menu'">
+            <img src="images/cake2.jpg" alt="Cakes">
+            <div class="cat-overlay">
+                <h3>Celebration Cakes</h3>
+                <span>Basic & Designer Options</span>
+            </div>
+        </div>
+        <div class="cat-card" onclick="location.href='#menu'">
+            <img src="images/cookie2.jpg" alt="Cookies">
+            <div class="cat-overlay">
+                <h3>Cookies & Tea Cakes</h3>
+                <span>Perfect for Gifting</span>
+            </div>
+        </div>
+        <div class="cat-card" onclick="location.href='#menu'">
+            <img src="images/pizza1.jpg" alt="Savories">
+            <div class="cat-overlay">
+                <h3>Savory Bakes</h3>
+                <span>Puffs & Rolls</span>
+            </div>
         </div>
     </div>
 </section>
@@ -698,73 +831,113 @@
 <section id="gallery" style="background: white;">
     <h2 class="section-title">Gallery & ideas</h2>
     <p class="section-subtitle">
-        A quick peek into some of our recent bakes. Replace these images with your own from the Google Drive
-        catalog to match the exact styles you offer.
+        A quick peek into some of our recent bakes.
     </p>
     <div class="gallery-grid">
-        <!-- Replace each src with your own photo: e.g. birthday cakes, cookies, wedding cake etc. -->
         <div class="gallery-card">
-            <img src="images/cake2.jpg" alt="Custom birthday cake">
+            <img src="images/cake3.jpg" alt="Custom birthday cake" loading="lazy">
             <div class="gallery-label">Birthday & kids’ cakes</div>
         </div>
         <div class="gallery-card">
-            <img src="images/cookie2.jpg" alt="Assorted cookie gift box">
+            <img src="images/cookie3.jpg" alt="Assorted cookie gift box" loading="lazy">
             <div class="gallery-label">Cookie & brownie boxes</div>
         </div>
         <div class="gallery-card">
-            <img src="images/browne1.jpg" alt="Tea-time loaf cake">
+            <img src="images/browne1.jpg" alt="Tea-time loaf cake" loading="lazy">
             <div class="gallery-label">Tea-time cakes</div>
         </div>
         <div class="gallery-card">
-            <img src="images/cake3.jpg" alt="Elegant wedding cake">
+            <img src="images/cake4.jpg" alt="Elegant wedding cake" loading="lazy">
             <div class="gallery-label">Minimal & wedding cakes</div>
         </div>
         <div class="gallery-card">
-            <img src="images/modak.jpg" alt="Festive Modaks">
+            <img src="images/cupcake2.jpg" alt="Assorted Cupcakes" loading="lazy">
+            <div class="gallery-label">Cupcakes</div>
+        </div>
+        <div class="gallery-card">
+            <img src="images/cupcake3.jpg" alt="Fudgy Brownies" loading="lazy">
+            <div class="gallery-label">Brownies</div>
+        </div>
+        <div class="gallery-card">
+            <img src="images/cupcake1.jpg" alt="Fruit Tarts" loading="lazy">
+            <div class="gallery-label">Specialty Cupcakes</div>
+        </div>
+        <div class="gallery-card">
+            <img src="images/modak.jpg" alt="Glazed Donuts" loading="lazy">
             <div class="gallery-label">Festive Modaks</div>
         </div>
-        <div class="gallery-card">
-            <img src="images/pizza1.jpg" alt="Savory Bakes">
-            <div class="gallery-label">Savory Pizza & Puffs</div>
+    </div>
+</section>
+
+<!-- EVENTS SECTION -->
+<section id="events" style="background: #fff9e6;">
+    <h2 class="section-title">Events & Catering</h2>
+    <p class="section-subtitle">
+        Make your special occasions sweeter with our custom dessert tables and bulk gifting options.
+    </p>
+    <div class="events-grid">
+        <div class="event-card">
+            <img src="images/event2.jpg" alt="Wedding Cakes & Tables">
+            <div class="event-content">
+                <h3>Weddings</h3>
+                <p style="margin:0; font-size:0.9rem; color:#ddd;">Elegant tiered cakes and dessert spreads.</p>
+            </div>
         </div>
-        <div class="gallery-card">
-            <img src="images/event1.jpg" alt="Catering & Events">
-            <div class="gallery-label">Events & Catering</div>
+        <div class="event-card">
+            <img src="images/event3.jpg" alt="Corporate Gifting">
+            <div class="event-content">
+                <h3>Corporate Gifting</h3>
+                <p style="margin:0; font-size:0.9rem; color:#ddd;">Branded cookies and festive hampers.</p>
+            </div>
         </div>
-        <div class="gallery-card">
-            <img src="images/cupcake2.jpg" alt="Custom Cupcakes">
-            <div class="gallery-label">Custom Cupcakes</div>
-        </div>
-        <div class="gallery-card">
-            <img src="images/browne2.jpg" alt="Fudgy Brownies">
-            <div class="gallery-label">Fudgy Brownies</div>
-        </div>
-        <div class="gallery-card">
-            <img src="images/cake4.jpg" alt="Specialty Cakes">
-            <div class="gallery-label">Specialty Cakes</div>
+        <div class="event-card">
+            <img src="images/event1.jpg" alt="Birthday Parties">
+            <div class="event-content">
+                <h3>Parties</h3>
+                <p style="margin:0; font-size:0.9rem; color:#ddd;">Cupcakes, brownies, and return gifts.</p>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- MENU / PRODUCTS -->
 <section id="menu">
-    <h2 class="section-title">Cakes, cookies & oven bakes</h2>
+    <h2 class="section-title">Menu & Pricing</h2>
     <p class="section-subtitle">
-        Below is a quick snapshot of our popular offerings. Use this as a starting point – we’re happy to customize
-        flavors, sizes and designs based on your occasion.
+        Transparent pricing for our standard and custom bakes.
     </p>
 
     <div class="menu-tabs">
         <div class="menu-tab">Celebration Cakes</div>
         <div class="menu-tab">Tea-time / Loaf Cakes</div>
         <div class="menu-tab">Cookies & brownies</div>
+        <div class="menu-tab">Healthy Bakes</div>
         <div class="menu-tab">Savory oven bakes</div>
     </div>
 
     <div class="menu-container">
         <div class="menu-category">
-            <h3>Signature Celebration Cakes</h3>
-            <span>Round / square · Custom themes available</span>
+            <h3>Celebration Cakes</h3>
+            <span style="display:block; margin-bottom:16px;">Choose between our classic range or fully custom designs.</span>
+            
+            <!-- Pricing Split -->
+            <div class="pricing-split">
+                <div class="price-tier">
+                    <div class="tier-header">
+                        <span class="tier-title">Basic Range</span>
+                        <span class="tier-price">₹600 - ₹850</span>
+                    </div>
+                    <p style="font-size:0.85rem; color:var(--muted);">Per ½ kg. Standard flavors, minimal cream decoration, 24hr notice.</p>
+                </div>
+                <div class="price-tier designer">
+                    <div class="tier-header">
+                        <span class="tier-title">Designer / Custom</span>
+                        <span class="tier-price">From ₹1200</span>
+                    </div>
+                    <p style="font-size:0.85rem; color:var(--muted);">Per kg. Premium flavors, fondant accents, theme work. 3-5 days notice.</p>
+                </div>
+            </div>
+
             <div class="menu-list">
                 <div class="menu-item">
                     <div>
@@ -826,6 +999,27 @@
         </div>
 
         <div class="menu-category">
+            <h3>Healthy Bakes</h3>
+            <span>Guilt-free treats with jaggery & oats</span>
+            <div class="menu-list">
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Oats & Cranberry Cookies</div>
+                        <span class="item-note">Whole wheat, jaggery, and fiber-rich oats</span>
+                    </div>
+                    <div class="price">Box pricing</div>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Ragi & Dark Chocolate</div>
+                        <span class="item-note">Gluten-free millet flour with 70% cocoa</span>
+                    </div>
+                    <div class="price">Box pricing</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category">
             <h3>Tea-time & Loaf Cakes</h3>
             <span>Everyday bakes for coffee & chai</span>
             <div class="menu-list">
@@ -876,23 +1070,30 @@
     </div>
 </section>
 
+
+
 <!-- TESTIMONIALS & FAQ -->
 <section id="testimonials">
-    <h2 class="section-title">What customers say</h2>
+    <h2 class="section-title">Recent Reviews</h2>
     <p class="section-subtitle">
-        Use this space to add 2–3 real reviews from your regulars or screenshots from WhatsApp / Instagram
-        (typed out for privacy and readability).
+        Feedback from our happy customers.
     </p>
     <div class="two-column">
         <div>
             <div class="testimonial-card">
                 “The cake was exactly what we had in mind – not overly sweet, super fresh and beautifully
                 decorated. Everyone at the party asked where we ordered from!”
-                <div class="testimonial-name">– Customer name, Pune</div>
+                <div class="testimonial-name">
+                    – Customer name, Pune
+                    <div class="review-date">2 days ago</div>
+                </div>
             </div>
             <div class="testimonial-card" style="margin-top:14px;">
                 “Loved the assorted cookie box – perfect balance of flavors and textures. Reordering soon!”
-                <div class="testimonial-name">– Customer name, City</div>
+                <div class="testimonial-name">
+                    – Customer name, City
+                    <div class="review-date">1 week ago</div>
+                </div>
             </div>
         </div>
         <div class="faq-group">
@@ -990,6 +1191,40 @@
 <footer>
     © 2026 Unibakes. Home-baked cakes, cookies & oven bakes.
 </footer>
+
+<script>
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let slideInterval = setInterval(() => moveSlide(1), 5000);
+
+    function showSlide(n) {
+        slideIndex = n;
+        if (slideIndex >= slides.length) slideIndex = 0;
+        if (slideIndex < 0) slideIndex = slides.length - 1;
+
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        slides[slideIndex].classList.add('active');
+        dots[slideIndex].classList.add('active');
+    }
+
+    function moveSlide(n) {
+        showSlide(slideIndex + n);
+        resetTimer();
+    }
+
+    function currentSlide(n) {
+        showSlide(n);
+        resetTimer();
+    }
+
+    function resetTimer() {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(() => moveSlide(1), 5000);
+    }
+</script>
 
 </body>
 </html>
