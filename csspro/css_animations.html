@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation Masterclass</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #f43f5e;
+            --accent: #10b981;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        h2 { margin-bottom: 30px; border-left: 4px solid var(--primary); padding-left: 15px; }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        /* --- 1. ENTRANCE & REVEAL (Keyframes) --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .reveal-box {
+            height: 100px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .stagger-1 { animation-delay: 0.2s; opacity: 0; }
+        .stagger-2 { animation-delay: 0.4s; opacity: 0; }
+        .stagger-3 { animation-delay: 0.6s; opacity: 0; }
+
+        /* --- 2. MICRO-INTERACTIONS (Transitions) --- */
+        .btn-interact {
+            padding: 20px;
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: bold;
+        }
+
+        .btn-interact:hover {
+            background: var(--secondary);
+            color: white;
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 10px 20px rgba(244, 63, 94, 0.3);
+        }
+
+        /* 3D Flip Card */
+        .flip-card {
+            height: 150px;
+            perspective: 1000px;
+        }
+        .flip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-inner { transform: rotateY(180deg); }
+        .flip-front, .flip-back {
+            position: absolute;
+            width: 100%; height: 100%;
+            backface-visibility: hidden;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 12px;
+        }
+        .flip-front { background: var(--primary); }
+        .flip-back { background: var(--accent); transform: rotateY(180deg); }
+
+        /* --- 3. INFINITE LOOPS --- */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-20px); }
+        }
+        .floating-icon {
+            font-size: 3rem;
+            animation: float 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+        .marquee-container {
+            overflow: hidden;
+            background: rgba(0,0,0,0.3);
+            padding: 10px 0;
+            white-space: nowrap;
+        }
+        .marquee-text {
+            display: inline-block;
+            animation: marquee 10s linear infinite;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        /* --- 4. SHAPE MORPHING --- */
+        @keyframes morph {
+            0% { clip-path: circle(50% at 50% 50%); background: var(--primary); }
+            50% { clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); background: var(--secondary); }
+            100% { clip-path: inset(10% 10% 10% 10% round 20px); background: var(--accent); }
+        }
+        .morph-box {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            animation: morph 4s infinite alternate ease-in-out;
+        }
+
+        /* --- 5. SKELETON LOADER --- */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .skeleton {
+            height: 20px;
+            width: 100%;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #334155 25%, #475569 50%, #334155 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 4px;
+        }
+
+        /* --- 6. SCROLL PROGRESS BAR --- */
+        #progress-bar {
+            position: fixed;
+            top: 0; left: 0; width: 0%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            z-index: 999;
+        }
+
+        /* --- 7. LINEAR & CIRCULAR PROGRESS --- */
+        .progress-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        /* Linear Bar */
+        .bar-track {
+            width: 100%;
+            height: 12px;
+            background: #334155;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 0%;
+            animation: fillBar 3s ease-in-out forwards;
+        }
+
+        /* Circular Knob */
+        .circular-knob {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            /* The core magic: Conic Gradient */
+            background: conic-gradient(var(--primary) 0%, #334155 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fillCircle 3s ease-in-out forwards;
+        }
+        /* The "Hole" in the middle to make it a ring */
+        .circular-knob::after {
+            content: '85%';
+            width: 120px;
+            height: 120px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* --- 8. HIT COUNTERS --- */
+        .counter-box {
+            display: flex;
+            font-size: 3rem;
+            font-weight: bold;
+            height: 4rem;
+            overflow: hidden;
+            background: #000;
+            padding: 0 10px;
+            border-radius: 8px;
+            color: var(--accent);
+        }
+        .digit-strip {
+            display: flex;
+            flex-direction: column;
+            transition: transform 2s cubic-bezier(0.1, 0.7, 0.1, 1);
+        }
+
+        /* KEYFRAMES */
+        @keyframes fillBar {
+            to { width: 100%; }
+        }
+
+        @keyframes fillCircle {
+            /* Animates the gradient percentage */
+            to { background: conic-gradient(var(--primary) 85%, #334155 0%); }
+        }
+
+        @keyframes countUp {
+            from { transform: translateY(0); }
+            to { transform: translateY(-90%); } /* Moves to the number 9 */
+        }
+
+        /* THE TRACK: We need enough height to actually "scroll" */
+    .scroll-track {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30vh; /* Massive gaps to ensure elements enter/exit clearly */
+        padding: 10vh 0;
+    }
+
+    .scroll-item {
+        width: 100%;
+        max-width: 500px;
+        padding: 40px;
+        background: var(--card-bg);
+        border-radius: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+        text-align: center;
+        position: relative;
+    }
+
+    .status-tag {
+        position: absolute;
+        top: -10px;
+        right: 20px;
+        background: var(--primary);
+        font-size: 0.7rem;
+        padding: 4px 10px;
+        border-radius: 20px;
+    }
+
+    /*  THE ANIMATIONS (Using View Timeline) */
+    
+    /* Reveal Slide Logic */
+    @keyframes revealSlide {
+        from { opacity: 0; transform: translateX(-100px); filter: blur(10px); }
+        to { opacity: 1; transform: translateX(0); filter: blur(0); }
+    }
+    
+    .reveal-slide {
+        view-timeline-name: --reveal;
+        view-timeline-axis: block;
+        animation: revealSlide linear both;
+        animation-timeline: --reveal;
+        animation-range: entry 10% cover 40%;
+    }
+
+    /* Color Morph Logic */
+    @keyframes morphColor {
+        0% { background: #1e293b; transform: scale(0.8); }
+        50% { background: var(--primary); transform: scale(1); }
+        100% { background: var(--accent); transform: scale(0.8); }
+    }
+
+    .color-morph {
+        view-timeline-name: --morph;
+        animation: morphColor linear both;
+        animation-timeline: --morph;
+        animation-range: entry 0% exit 100%;
+    }
+
+    /* THE CONTAINER */
+    .counter-box {
+        display: flex;
+        font-size: 4rem;
+        font-weight: 900;
+        height: 5rem; /* Matches one digit height */
+        line-height: 5rem;
+        overflow: hidden;
+        background: #000;
+        color: var(--accent);
+        border-radius: 12px;
+        padding: 0 15px;
+        border: 4px solid var(--primary);
+    }
+
+    /* THE MISSING CLASS: The vertical film strip */
+    .digit-strip {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .scroll-trigger-wrapper {
+        margin: 20vh 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* The "Camera" that watches this section */
+        view-timeline-name: --fast-scroll;
+        view-timeline-axis: block;
+    }
+
+    @keyframes countScroll {
+        from { transform: translateY(0); }
+        to { transform: translateY(-90%); } /* Slides to 9 */
+    }
+
+    .scroll-linked-logic {
+        animation: countScroll linear both;
+        animation-timeline: --fast-scroll;
+        
+        /* SPEED FIX: 
+           Start when it's 20% from the bottom.
+           Finish by the time it reaches 50% (middle) of screen.
+           This makes the animation happen over a short scroll distance = FAST SPEED. 
+        */
+        animation-range: entry 20% cover 50%;
+    }
+
+    /* Same fallback for Firefox/Safari */
+    @supports not (animation-timeline: scroll()) {
+        .scroll-linked-logic {
+            animation: countScroll 2s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+        }
+    }
+
+    </style>
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+
+    <a href="home.html" style="display: block; padding: 12px; background: #2d3748; color: #f7fafc; text-align: center; text-decoration: none; font-weight: 600; font-family: system-ui, sans-serif; margin-bottom: 40px; border-radius: 8px;">&larr; Back to Home</a>
+    
+    <div class="container">
+        
+        <h1>The CSS Animation Library</h1>
+
+        <section>
+            <h2>1. Entrance & Reveal (Staggered)</h2>
+            <div class="demo-grid">
+                <div class="reveal-box stagger-1">Item 1</div>
+                <div class="reveal-box stagger-2">Item 2</div>
+                <div class="reveal-box stagger-3">Item 3</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Micro-Interactions</h2>
+            <div class="demo-grid">
+                <button class="btn-interact">HOVER ME</button>
+                <div class="flip-card">
+                    <div class="flip-inner">
+                        <div class="flip-front">Front (Hover)</div>
+                        <div class="flip-back">Back!</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Continuous Loops</h2>
+            <div class="demo-grid">
+                <div class="floating-icon">🚀</div>
+                <div style="grid-column: span 2;">
+                    <div class="marquee-container">
+                        <div class="marquee-text">BREAKING NEWS: CSS ANIMATIONS ARE AWESOME — ENDLESS SCROLLING TEXT — </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Path & Shape Morphing</h2>
+            <div class="morph-box"></div>
+        </section>
+
+        <section>
+            <h2>5. Skeleton Loaders (State Transitions)</h2>
+            <div style="max-width: 400px; margin: 0 auto;">
+                <div class="skeleton" style="width: 40%; height: 40px;"></div>
+                <div class="skeleton"></div>
+                <div class="skeleton"></div>
+                <div class="skeleton" style="width: 80%;"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>6. Data & Progress Animations</h2>
+            <div class="demo-grid">
+                <div class="progress-wrapper">
+                    <p>Linear Load (0-100%)</p>
+                    <div class="bar-track">
+                        <div class="bar-fill"></div>
+                    </div>
+                    
+                    <p>Circular Progress Knob</p>
+                    <div class="circular-knob"></div>
+                </div>
+
+                <div class="progress-wrapper">
+                    <p>Hit Counter (Hits/Users)</p>
+                    <div style="display: flex; gap: 5px;">
+                        <div class="counter-box">
+                            <div class="digit-strip" style="animation: countUp 2s forwards;">
+                                <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+                            </div>
+                        </div>
+                        <div class="counter-box">
+                            <div class="digit-strip" style="animation: countUp 2.5s forwards;">
+                                <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+                            </div>
+                        </div>
+                        <div class="counter-box">
+                            <div class="digit-strip" style="animation: countUp 1.5s forwards;">
+                                <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p><small>Total Site Hits</small></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="scroll-trigger-section">
+            <h2>7. Scroll-Driven Animations (Modern CSS)</h2>
+            <p style="margin-bottom: 20px; color: var(--accent);">
+                ← Scroll Down. These items "animate" based on their position in the window.
+            </p>
+
+            <div class="scroll-track">
+                <div class="scroll-item reveal-slide">
+                    <div class="status-tag">Entry Phase</div>
+                    <h3>I reveal as I enter</h3>
+                    <p>My opacity and blur are linked to the scrollbar.</p>
+                </div>
+
+                <div class="scroll-item color-morph">
+                    <div class="status-tag">Mid-Phase</div>
+                    <h3>Color Shift</h3>
+                    <p>I turn from Purple to Green as I reach the center.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <h2>8. High-Speed Scroll Counter</h2>
+            <p>Scroll down slightly—the numbers will "spin" fast as they pass the middle of the screen.</p>
+            
+            <div class="scroll-trigger-wrapper">
+                <div class="counter-box">
+                    <div class="digit-strip scroll-linked-logic">
+                        <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+                    </div>
+                </div>
+                <p>Counting 0-9</p>
+            </div>
+            
+            <div style="height: 50vh;"></div>
+        </section>
+        
+        <section style="background: transparent; border: none; text-align: center;">
+            <p>Scroll down to see the Progress Bar at the top!</p>
+            <div style="height: 1000px;"></div>
+        </section>
+    </div>
+
+    <a href="home.html" style="display: block; padding: 12px; background: #2d3748; color: #f7fafc; text-align: center; text-decoration: none; font-weight: 600; font-family: system-ui, sans-serif; margin-bottom: 40px; border-radius: 8px;">&larr; Back to Home</a>
+
+    <script>
+        // Simple script for the Scroll Progress Bar
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Examples - Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --bg-body: #f3f4f6;
+            --bg-card: #ffffff;
+            --text-dark: #111827;
+            --text-light: #4b5563;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--bg-card);
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.07);
+        }
+
+        .card-content {
+            padding: 24px;
+            flex-grow: 1;
+        }
+
+        .card-content h3 {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .card-content p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .card-footer {
+            padding: 16px 24px;
+            background-color: #f9fafb;
+            border-top: 1px solid var(--border-color);
+            text-align: right;
+            font-weight: 600;
+            color: var(--primary-color);
+            transition: background-color 0.2s ease;
+        }
+
+        .card:hover .card-footer {
+            background-color: #f0f3f6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CSS Examples Showcase</h1>
+        <p>A collection of advanced CSS demonstrations and layouts.</p>
+    </header>
+    <main>
+        <div class="showcase-grid">
+            <a href="css_layout_showcase.html" class="card">
+                <div class="card-content"><h3>CSS Layout Master Guide</h3><p>A deep dive into Flexbox, Grid, Positioning, and responsive design patterns like the Holy Grail layout.</p></div><div class="card-footer">View Showcase &rarr;</div>
+            </a>
+            <a href="css_effects.html" class="card">
+                <div class="card-content"><h3>Advanced CSS Effects</h3><p>Explore modern effects like Glassmorphism, clip-path shapes, fluid typography, and custom scrollbars.</p></div><div class="card-footer">View Showcase &rarr;</div>
+            </a>
+            <a href="layers_gradients.html" class="card">
+                <div class="card-content"><h3>Layers & Gradients</h3><p>Understand z-index stacking contexts and master linear, radial, and conic gradients for stunning visuals.</p></div><div class="card-footer">View Showcase &rarr;</div>
+            </a>
+            <a href="dynamic_themes.html" class="card">
+                <div class="card-content"><h3>Dynamic Theming</h3><p>Learn to build light/dark themes using CSS Custom Properties and a bit of JavaScript for interactivity.</p></div><div class="card-footer">View Showcase &rarr;</div>
+            </a>
+            <a href="css_animations.html" class="card">
+                <div class="card-content"><h3>CSS Animation Masterclass</h3><p>Master CSS animations from basic entrance effects to advanced scroll-driven and path morphing.</p></div><div class="card-footer">View Showcase &rarr;</div>
+            </a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2026 CSS -Avadhut</p>
+    </footer>
+</body>
+</html>

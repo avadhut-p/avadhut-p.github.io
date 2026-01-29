@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Theme Showcase</title>
+    <style>
+        /* 1. VARIABLE DEFINITIONS */
+        :root[data-theme="light"] {
+            --bg-body: #f4f7f6;
+            --bg-card: #ffffff;
+            --text-main: #2c3e50;
+            --text-muted: #5a67d8;
+            --accent: #3498db;
+            --border: #e2e8f0;
+            --header-bg: #ffffff;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        :root[data-theme="dark"] {
+            --bg-body: #1a202c;
+            --bg-card: #2d3748;
+            --text-main: #f7fafc;
+            --text-muted: #a0aec0;
+            --accent: #63b3ed;
+            --border: #4a5568;
+            --header-bg: #1a202c;
+            --card-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+        }
+
+        /* 2. GLOBAL STYLES (No repeating CSS here) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+        }
+
+        /* 3. HEADER & TOGGLE */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--header-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .theme-switch {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* 4. LAYOUT SECTIONS */
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+        }
+
+        .feature-card h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+        }
+
+        /* 5. SPECIFIC STYLE ELEMENTS (Gradients & Layering) */
+        .gradient-banner {
+            height: 150px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--accent), #9b59b6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="home.html" style="display: block; padding: 12px; background: #2d3748; color: #f7fafc; text-align: center; text-decoration: none; font-weight: 600; font-family: system-ui, sans-serif;">&larr; Back to Home</a>
+
+    <header>
+        <div><strong>CSS LAB</strong></div>
+        <button class="theme-switch" id="themeBtn">Switch to Dark Mode</button>
+    </header>
+
+    <main>
+        <section class="gradient-banner">
+            Theme-Aware Layout
+        </section>
+
+        <div class="grid-layout">
+            <article class="feature-card">
+                <h2>Flexbox Center</h2>
+                <p>All colors in this card change automatically because they use <code>var(--text-main)</code> instead of hex codes.</p>
+            </article>
+
+            <article class="feature-card">
+                <h2>Grid Structure</h2>
+                <p>The border and shadow adapt to the theme to ensure depth is visible in both modes.</p>
+            </article>
+
+            <article class="feature-card">
+                <h2>Layering</h2>
+                <p>Z-index remains constant, but the background colors behind the layers shift for readability.</p>
+            </article>
+        </div>
+    </main>
+
+    <a href="home.html" style="display: block; padding: 12px; background: #2d3748; color: #f7fafc; text-align: center; text-decoration: none; font-weight: 600; font-family: system-ui, sans-serif;">&larr; Back to Home</a>
+
+    <script>
+        const btn = document.getElementById('themeBtn');
+        const root = document.documentElement;
+
+        btn.addEventListener('click', () => {
+            const currentTheme = root.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            root.setAttribute('data-theme', newTheme);
+            btn.textContent = `Switch to ${newTheme === 'light' ? 'Dark' : 'Light'} Mode`;
+        });
+    </script>
+</body>
+</html>
